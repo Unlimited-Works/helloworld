@@ -15,7 +15,7 @@
         <dependency>
             <groupId>net.liftweb</groupId>
             <artifactId>lift-mongodb-record_2.11</artifactId>
-            <version>3.0-M6</version>
+            <version>3.0-M7</version>
         </dependency>
 
         <dependency>
