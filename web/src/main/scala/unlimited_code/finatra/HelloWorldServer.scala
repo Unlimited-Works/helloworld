@@ -12,7 +12,7 @@ object HelloWorldServerMain extends HelloWorldServer
 class HelloWorldServer extends HttpServer {
   override def modules = Seq(Slf4jBridgeModule)
 
-  override def defaultFinatraHttpPort = ":2333" // limited (1024, 49152) as self defined port
+  override def defaultFinatraHttpPort = ":9999" // limited (1024, 49152) as self defined port
   override def configureHttp(router: HttpRouter) {
     router
       .filter[LoggingMDCFilter[Request, Response]]
