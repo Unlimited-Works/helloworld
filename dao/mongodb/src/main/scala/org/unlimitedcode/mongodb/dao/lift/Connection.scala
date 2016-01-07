@@ -1,4 +1,4 @@
-package unlimited_works.mongodb.dao.lift
+package org.unlimitedcode.mongodb.dao.lift
 
 import com.mongodb.{Mongo, ServerAddress, MongoClient, MongoClientOptions}
 import net.liftweb.mongodb.MongoDB

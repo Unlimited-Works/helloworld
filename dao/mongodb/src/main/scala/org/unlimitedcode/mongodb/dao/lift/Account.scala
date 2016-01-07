@@ -1,4 +1,4 @@
-package unlimited_works.mongodb.dao.lift
+package org.unlimitedcode.mongodb.dao.lift
 
 import net.liftweb.mongodb.record._
 import net.liftweb.mongodb.record.field.ObjectIdPk

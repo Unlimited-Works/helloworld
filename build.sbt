@@ -31,6 +31,8 @@ lazy val versions = new {
   val finatra = "2.1.2"
   val guice = "4.0"
   val logback = "1.0.13"
+
+  val liftMongoRecorder = "3.0-M7"
 }
 
 lazy val web = (project in file("web")).
@@ -74,7 +76,7 @@ lazy val akka = (project in file("akka")).
   settings(buildSettings: _*).
   settings(
     name := "akka",
-//    organization := "com.unlimited_works.akka",
+    organization := "org.unlimitedcode.akka",
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor" % versions.akkaActor
     )
@@ -87,7 +89,8 @@ lazy val daoMongodb = (project in file("dao/mongodb")).
     name := "dao-mongodb",
     moduleName := name.value,
     libraryDependencies ++= Seq(
-      "org.mongodb.scala" %% "mongo-scala-driver" % versions.mongoScalaDriver
+      "org.mongodb.scala" %% "mongo-scala-driver" % versions.mongoScalaDriver,
+      "net.liftweb" %% "lift-mongodb-record" % versions.liftMongoRecorder
     )
   )
 
@@ -99,7 +102,7 @@ lazy val daoUtil = (project in file("dao/util")).
   )
 
 //not decide needs of util, need the top dependence for other modules?
-// If need, other modules can't independence, a good method is put the util to a private respository
+// If need, other modules can't independence, a good way is put the util to a private responsitory
 lazy val util = (project in file("util")).
   settings(buildSettings: _*).
   settings(

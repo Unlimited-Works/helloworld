@@ -1,4 +1,4 @@
-package unlimited_code.finatra
+package org.unlimitedcode.finatra
 
 import com.twitter.finagle.http.Request
 import com.twitter.finatra.http.Controller

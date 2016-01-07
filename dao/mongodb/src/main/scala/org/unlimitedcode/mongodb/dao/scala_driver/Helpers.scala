@@ -1,4 +1,4 @@
-package unlimited_works.mongodb.dao.scala_driver
+package org.unlimitedcode.mongodb.dao.scala_driver
 
 import java.util.concurrent.TimeUnit
 

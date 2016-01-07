@@ -1,4 +1,4 @@
-package unlimited_works.mongodb.dao
+package org.unlimitedcode.mongodb.dao
 
 object ScalaMain {
 

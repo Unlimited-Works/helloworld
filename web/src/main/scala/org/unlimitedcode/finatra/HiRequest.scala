@@ -1,4 +1,4 @@
-package unlimited_code.finatra
+package org.unlimitedcode.finatra
 
 case class HiRequest(
   id: Long,

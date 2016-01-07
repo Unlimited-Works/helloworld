@@ -1,4 +1,4 @@
-package unlimited_works.helloworld.util.io
+package org.unlimitedcode.helloworld.util.io
 
 import java.io.{EOFException, IOException}
 

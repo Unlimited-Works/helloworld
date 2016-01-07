@@ -1,11 +1,12 @@
-package unlimited_works.mongodb.dao.lift
+package org.unlimitedcode.mongodb.dao.lift
 
 import com.mongodb.ServerAddress
 import net.liftweb.util.DefaultConnectionIdentifier
 import net.liftweb.mongodb.MongoDB
-import unlimited_works.mongodb.dao
+import org.unlimitedcode.mongodb.dao.TMain
+import unlimited_code.mongodb.dao
 
-class Main extends dao.TMain{
+class Main extends TMain{
   override def linkToMongo = {
     val mongoClient = new com.mongodb.MongoClient(new ServerAddress("127.0.0.1", 27017))
 

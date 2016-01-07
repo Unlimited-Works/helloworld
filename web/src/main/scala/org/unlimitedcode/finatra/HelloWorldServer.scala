@@ -1,4 +1,4 @@
-package unlimited_code.finatra
+package org.unlimitedcode.finatra
 
 import com.twitter.finagle.http.{Request, Response}
 import com.twitter.finatra.http.HttpServer
@@ -12,7 +12,7 @@ object HelloWorldServerMain extends HelloWorldServer
 class HelloWorldServer extends HttpServer {
   override def modules = Seq(Slf4jBridgeModule)
 
-  override def defaultFinatraHttpPort = ":9999" // limited (1024, 49152) as self defined port
+  override def defaultFinatraHttpPort = ":9999" // limited (1024, 49152) as self-define port
   override def configureHttp(router: HttpRouter) {
     router
       .filter[LoggingMDCFilter[Request, Response]]
