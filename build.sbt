@@ -15,7 +15,7 @@ lazy val compilerOptions = scalacOptions ++= Seq(
 )
 
 lazy val helloworldModules = Seq(
-  `web-finatra`,
+  webFinatra,
   akka,
   daoMongodb,
   daoUtil
@@ -33,7 +33,7 @@ lazy val versions = new {
   val liftMongoRecorder = "3.0-M7"
 }
 
-lazy val `web-finatra` = (project in file("finatra")).
+lazy val webFinatra = (project in file("finatra")).
   settings(buildSettings: _*).
   settings(
     resolvers ++= Seq(Resolver.sonatypeRepo("releases"),
