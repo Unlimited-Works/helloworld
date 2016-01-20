@@ -1,0 +1,9 @@
+@(customer: String, orders: List[String])
+
+<h1>Welcome @customer!</h1>
+
+<ul>
+    @for(order <- orders) {
+    <li>@order</li>
+    }
+</ul>

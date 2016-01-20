@@ -1,0 +1,140 @@
+{
+  "statistic":
+  [{
+    "_id" : "HUN",
+    "count" : 1
+  },
+  {
+    "_id" : "BRA",
+    "count" : 30
+  },
+  {
+    "_id" : "ARG",
+    "count" : 16
+  },
+  {
+    "_id" : "IND",
+    "count" : 8
+  },
+  {
+    "_id" : "PHL",
+    "count" : 38
+  },
+  {
+    "_id" : "BEL",
+    "count" : 77
+  },
+  {
+    "_id" : "GBR",
+    "count" : 512
+  },
+  {
+    "_id" : "SWE",
+    "count" : 43
+  },
+  {
+    "_id" : "UKR",
+    "count" : 31
+  },
+  {
+    "_id" : "BLR",
+    "count" : 15
+  },
+  {
+    "_id" : "POL",
+    "count" : 126
+  },
+  {
+    "_id" : "ZAF",
+    "count" : 26
+  },
+  {
+    "_id" : "THA",
+    "count" : 35
+  },
+  {
+    "_id" : "KOR",
+    "count" : 283
+  },
+  {
+    "_id" : "CHS",
+    "count" : 3403
+  },
+  {
+    "_id" : "IRL",
+    "count" : 44
+  },
+  {
+    "_id" : "RUS",
+    "count" : 509
+  },
+  {
+    "_id" : "FIN",
+    "count" : 61
+  },
+  {
+    "_id" : "CHE",
+    "count" : 41
+  },
+  {
+    "_id" : "USA",
+    "count" : 6601
+  },
+  {
+    "_id" : "DEU",
+    "count" : 409
+  },
+  {
+    "_id" : "CAN",
+    "count" : 258
+  },
+  {
+    "_id" : "NOR",
+    "count" : 40
+  },
+  {
+    "_id" : "AUT",
+    "count" : 68
+  },
+  {
+    "_id" : "FRA",
+    "count" : 444
+  },
+  {
+    "_id" : "NZL",
+    "count" : 47
+  },
+  {
+    "_id" : "JPN",
+    "count" : 823
+  },
+  {
+    "_id" : "NLD",
+    "count" : 64
+  },
+  {
+    "_id" : "DNK",
+    "count" : 32
+  },
+  {
+    "_id" : "SGP",
+    "count" : 33
+  },
+  {
+    "_id" : "ESP",
+    "count" : 56
+  },
+  {
+    "_id" : "MYS",
+    "count" : 61
+  },
+  {
+    "_id" : "AUS",
+    "count" : 145
+  },
+  {
+    "_id" : "ITA",
+    "count" : 231
+  }
+  ]
+}
