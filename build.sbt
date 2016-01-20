@@ -1,12 +1,10 @@
-
-import sbt.Keys._
+import Common._
 
 lazy val projectVersion = "1.0-SNAPSHOT"
 
-lazy val buildSettings = Seq(
-  version := projectVersion,
-  scalaVersion := "2.11.7"
-)
+scalaVersion := "2.11.7"
+
+fork in run := true
 
 lazy val baseSetting = Seq(
 
@@ -17,7 +15,7 @@ lazy val compilerOptions = scalacOptions ++= Seq(
 )
 
 lazy val helloworldModules = Seq(
-  web,
+  `web-finatra`,
   akka,
   daoMongodb,
   daoUtil
@@ -35,7 +33,7 @@ lazy val versions = new {
   val liftMongoRecorder = "3.0-M7"
 }
 
-lazy val web = (project in file("web")).
+lazy val `web-finatra` = (project in file("finatra")).
   settings(buildSettings: _*).
   settings(
     resolvers ++= Seq(Resolver.sonatypeRepo("releases"),
@@ -43,7 +41,7 @@ lazy val web = (project in file("web")).
     )
   ).
   settings(
-    name := "web",
+    name := "web-finatra",
     moduleName := name.value,
     libraryDependencies ++= Seq(
       "com.twitter.finatra" %% "finatra-http" % versions.finatra,
@@ -76,7 +74,7 @@ lazy val akka = (project in file("akka")).
   settings(buildSettings: _*).
   settings(
     name := "akka",
-    organization := "org.unlimitedcode.akka",
+//    organization := "org.unlimitedcode.akka",
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor" % versions.akkaActor
     )
@@ -101,11 +99,35 @@ lazy val daoUtil = (project in file("dao/util")).
     moduleName := name.value
   )
 
-//not decide needs of util, need the top dependence for other modules?
+// not decide needs of util, need the top dependence for other modules?
 // If need, other modules can't independence, a good way is put the util to a private responsitory
 lazy val util = (project in file("util")).
   settings(buildSettings: _*).
   settings(
     name := "util",
-    moduleName := name.value
+    moduleName := name.value,
+    libraryDependencies ++= Seq(
+      "net.liftweb" %% "lift-json" % "3.0-M7"
+    )
   )
+
+lazy val memcached = (project in file("memcached")).
+  settings(buildSettings: _*).
+  settings(
+    name := "memcached",
+    moduleName := name.value,
+    libraryDependencies ++= Seq(
+      "com.googlecode.xmemcached" % "xmemcached" % "2.0.0"
+    )
+  )
+
+lazy val webPlay = (project in file("play")).
+  settings(Common.buildSettings: _*).
+  settings(
+    resolvers += "Typesafe repository" at
+      "https://repo.typesafe.com/typesafe/releases/"
+  ).
+  settings(
+    name := "web-play",
+    moduleName := name.value
+  ).enablePlugins(PlayScala)
