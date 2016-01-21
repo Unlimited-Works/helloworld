@@ -131,3 +131,11 @@ lazy val webPlay = (project in file("play")).
     name := "web-play",
     moduleName := name.value
   ).enablePlugins(PlayScala)
+
+lazy val terminalGUI = (project in file("terminalGUI")).
+  settings(Common.buildSettings: _*).
+  settings(
+    libraryDependencies ++= Seq("com.googlecode.lanterna" %
+      "lanterna" % "2.1.9"
+    )
+  )
