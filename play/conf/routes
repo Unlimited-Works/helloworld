@@ -1,1 +1,4 @@
 GET     /signin     unlimited_works.play.controllers.HomePage.index
+
+
+GET  /assets/*file        controllers.Assets.at(path="/public", file)

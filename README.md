@@ -4,7 +4,7 @@
 1. use sbt command in project root dictionary, input keys
 2. >project webFinatra
 3. >run
-4. use localhost:9999/hi?name=foo on browser test is it work.
+4. use localhost:9999/signin on browser test is it work.
 
 ## run playframwork -
 1. sbt
