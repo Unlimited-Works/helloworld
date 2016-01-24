@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_webforwardend" default="compile.module.webforwardend">
+  <dirname property="module.webforwardend.basedir" file="${ant.file.module_webforwardend}"/>
+  
+  <property name="module.jdk.home.webforwardend" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.webforwardend" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.webforwardend" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.webforwardend" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="webforwardend.output.dir" value="${module.webforwardend.basedir}/../classes/production/webForwardend"/>
+  <property name="webforwardend.testoutput.dir" value="${module.webforwardend.basedir}/../classes/test/webForwardend"/>
+  
+  <path id="webforwardend.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="webforwardend.module.production.classpath">
+    <path refid="${module.jdk.classpath.webforwardend}"/>
+    <path refid="library.scala-sdk-2.11.7.classpath"/>
+  </path>
+  
+  <path id="webforwardend.runtime.production.module.classpath">
+    <pathelement location="${webforwardend.output.dir}"/>
+    <path refid="library.scala-sdk-2.11.7.classpath"/>
+  </path>
+  
+  <path id="webforwardend.module.classpath">
+    <path refid="${module.jdk.classpath.webforwardend}"/>
+    <pathelement location="${webforwardend.output.dir}"/>
+    <path refid="library.scala-sdk-2.11.7.classpath"/>
+  </path>
+  
+  <path id="webforwardend.runtime.module.classpath">
+    <pathelement location="${webforwardend.testoutput.dir}"/>
+    <pathelement location="${webforwardend.output.dir}"/>
+    <path refid="library.scala-sdk-2.11.7.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.webforwardend">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.webforwardend">
+    <patternset refid="excluded.from.module.webforwardend"/>
+  </patternset>
+  
+  <path id="webforwardend.module.sourcepath">
+    <dirset dir="${module.webforwardend.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.webforwardend" depends="compile.module.webforwardend.production,compile.module.webforwardend.tests" description="Compile module webForwardend"/>
+  
+  <target name="compile.module.webforwardend.production" depends="register.custom.compilers" description="Compile module webForwardend; production classes">
+    <mkdir dir="${webforwardend.output.dir}"/>
+    <javac2 destdir="${webforwardend.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.webforwardend}/javac">
+      <compilerarg line="${compiler.args.webforwardend}"/>
+      <bootclasspath refid="webforwardend.module.bootclasspath"/>
+      <classpath refid="webforwardend.module.production.classpath"/>
+      <src refid="webforwardend.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.webforwardend"/>
+    </javac2>
+    
+    <copy todir="${webforwardend.output.dir}">
+      <fileset dir="${module.webforwardend.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.webforwardend.tests" depends="register.custom.compilers,compile.module.webforwardend.production" description="compile module webForwardend; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.webforwardend" description="cleanup module">
+    <delete dir="${webforwardend.output.dir}"/>
+    <delete dir="${webforwardend.testoutput.dir}"/>
+  </target>
+</project>

@@ -1,27 +1,33 @@
 package unlimited_works.finatra
 
+import com.google.inject.Inject
 import com.twitter.finagle.http.{Request, Response}
+import com.twitter.finatra.annotations.Flag
 import com.twitter.finatra.http.HttpServer
 import com.twitter.finatra.http.filters.CommonFilters
 import com.twitter.finatra.http.routing.HttpRouter
 import com.twitter.finatra.logging.filter.{LoggingMDCFilter, TraceIdMDCFilter}
 import com.twitter.finatra.logging.modules.Slf4jBridgeModule
-import unlimited_works.finatra.controller.Login
-import unlimited_works.finatra.module.MyModule1
-import unlimited_works.finatra.public.Resources
+import unlimited_works.finatra.controller.{Resources, Login}
+import unlimited_works.finatra.module.AssetsPathConfigModule
 
 object HelloWorldServerMain extends HelloWorldServer
 
 class HelloWorldServer extends HttpServer {
-//  I was try convert assets path to resources/public, but those doesn't any effect.
-//  System.setProperty("com.twitter.finatra.config.assetPath", "src/main/resources/public")
-//  System.setProperty("local.doc.root", "src/main/resources/public")
+//  flag("doc.root", "unlimited_works.finatra.public", "assets class path")
 
+  //outer dependency as various modules, such as database, memcache, akka system
+  //every module with it's configuration could represent by Flag.
   override val modules = Seq(
     Slf4jBridgeModule,
-    MyModule1
+    AssetsPathConfigModule
   )
 
+  override def postWarmup() {
+    super.postWarmup()
+
+
+  }
   override def defaultFinatraHttpPort = ":9999"
 
   // limited (1024, 49152) as self-define port

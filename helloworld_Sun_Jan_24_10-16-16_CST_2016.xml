@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="helloworld" default="all">
+  
+  
+  <property file="helloworld.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.ear"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="lib/ant-javafx.jar"/>
+      <include name="lib/dt.jar"/>
+      <include name="lib/javafx-mx.jar"/>
+      <include name="lib/jconsole.jar"/>
+      <include name="lib/packager.jar"/>
+      <include name="lib/sa-jdi.jar"/>
+      <include name="lib/tools.jar"/>
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.sbt:_aopalliance:aopalliance:1.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_cglib:cglib-nodep:2.1_3:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/cglib/cglib-nodep/jars/cglib-nodep-2.1_3.jar"/>
+  </path>
+  
+  <path id="library.sbt:_ch.qos.logback:logback-classic:1.0.13:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/ch.qos.logback/logback-classic/jars/logback-classic-1.0.13.jar"/>
+  </path>
+  
+  <path id="library.sbt:_ch.qos.logback:logback-classic:1.1.3:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/ch.qos.logback/logback-classic/jars/logback-classic-1.1.3.jar"/>
+  </path>
+  
+  <path id="library.sbt:_ch.qos.logback:logback-core:1.0.13:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/ch.qos.logback/logback-core/jars/logback-core-1.0.13.jar"/>
+  </path>
+  
+  <path id="library.sbt:_ch.qos.logback:logback-core:1.1.3:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/ch.qos.logback/logback-core/jars/logback-core-1.1.3.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.fasterxml.jackson.core:jackson-annotations:2.4.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.4.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.fasterxml.jackson.core:jackson-annotations:2.5.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.5.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.fasterxml.jackson.core:jackson-core:2.4.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.4.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.fasterxml.jackson.core:jackson-core:2.5.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.5.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.fasterxml.jackson.core:jackson-databind:2.4.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.4.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.fasterxml.jackson.core:jackson-databind:2.5.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.5.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.5.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/bundles/jackson-datatype-jdk8-2.5.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.fasterxml.jackson.datatype:jackson-datatype-joda:2.4.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-joda/bundles/jackson-datatype-joda-2.4.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.5.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/bundles/jackson-datatype-jsr310-2.5.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.fasterxml.jackson.module:jackson-module-scala_2.11:2.4.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.fasterxml.jackson.module/jackson-module-scala_2.11/bundles/jackson-module-scala_2.11-2.4.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.github.nscala-time:nscala-time_2.11:1.6.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.github.nscala-time/nscala-time_2.11/jars/nscala-time_2.11-1.6.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.github.spullara.mustache.java:compiler:0.8.18:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.github.spullara.mustache.java/compiler/bundles/compiler-0.8.18.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.google.code.findbugs:jsr305:2.0.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.google.code.findbugs/jsr305/jars/jsr305-2.0.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.google.code.findbugs:jsr305:2.0.3:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.google.code.findbugs/jsr305/jars/jsr305-2.0.3.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.google.code.gson:gson:2.3:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.google.code.gson/gson/jars/gson-2.3.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.google.guava:guava:16.0.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.google.guava/guava/bundles/guava-16.0.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.google.guava:guava:18.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.google.guava/guava/bundles/guava-18.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.google.inject.extensions:guice-assistedinject:4.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.google.inject.extensions/guice-assistedinject/jars/guice-assistedinject-4.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.google.inject.extensions:guice-multibindings:4.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.google.inject.extensions/guice-multibindings/jars/guice-multibindings-4.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.google.inject.extensions:guice-testlib:4.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.google.inject.extensions/guice-testlib/jars/guice-testlib-4.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.google.inject:guice:4.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.google.inject/guice/jars/guice-4.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.googlecode.lanterna:lanterna:2.1.9:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.googlecode.lanterna/lanterna/jars/lanterna-2.1.9.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.googlecode.xmemcached:xmemcached:2.0.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.googlecode.xmemcached/xmemcached/jars/xmemcached-2.0.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.novocode:junit-interface:0.11:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.novocode/junit-interface/jars/junit-interface-0.11.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.thoughtworks.paranamer:paranamer:2.4.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.thoughtworks.paranamer/paranamer/jars/paranamer-2.4.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.thoughtworks.paranamer:paranamer:2.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.thoughtworks.paranamer/paranamer/jars/paranamer-2.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:application-action:0.0.89:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/application-action/jars/application-action-0.0.89.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:base:0.0.114:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/base/jars/base-0.0.114.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:collections:0.0.109:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/collections/jars/collections-0.0.109.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:jdk-logging:0.0.79:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/jdk-logging/jars/jdk-logging-0.0.79.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:metrics:0.0.37:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/metrics/jars/metrics-0.0.37.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:quantity:0.0.98:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/quantity/jars/quantity-0.0.98.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:stat-registry:0.0.57:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/stat-registry/jars/stat-registry-0.0.57.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:stat:0.0.72:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/stat/jars/stat-0.0.72.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:stats-provider:0.0.92:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/stats-provider/jars/stats-provider-0.0.92.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:stats-util:0.0.58:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/stats-util/jars/stats-util-0.0.58.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:stats:0.0.114:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/stats/jars/stats-0.0.114.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:util-executor-service-shutdown:0.0.66:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/util-executor-service-shutdown/jars/util-executor-service-shutdown-0.0.66.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:util-sampler:0.0.77:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/util-sampler/jars/util-sampler-0.0.77.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:util-system-mocks:0.0.103:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/util-system-mocks/jars/util-system-mocks-0.0.103.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.common:util:0.0.120:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.common/util/jars/util-0.0.120.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.finatra:finatra-http_2.11:2.1.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.finatra/finatra-http_2.11/jars/finatra-http_2.11-2.1.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.finatra:finatra-http_2.11:2.1.2:tests:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.finatra/finatra-http_2.11/jars/finatra-http_2.11-2.1.2-tests.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.finatra:finatra-httpclient_2.11:2.1.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.finatra/finatra-httpclient_2.11/jars/finatra-httpclient_2.11-2.1.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.finatra:finatra-jackson_2.11:2.1.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.finatra/finatra-jackson_2.11/jars/finatra-jackson_2.11-2.1.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.finatra:finatra-jackson_2.11:2.1.2:tests:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.finatra/finatra-jackson_2.11/jars/finatra-jackson_2.11-2.1.2-tests.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.finatra:finatra-scalap-compiler-deps_2.11:2.0.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.finatra/finatra-scalap-compiler-deps_2.11/jars/finatra-scalap-compiler-deps_2.11-2.0.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.finatra:finatra-slf4j_2.11:2.1.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.finatra/finatra-slf4j_2.11/jars/finatra-slf4j_2.11-2.1.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.finatra:finatra-utils_2.11:2.1.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.finatra/finatra-utils_2.11/jars/finatra-utils_2.11-2.1.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.inject:inject-app_2.11:2.1.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.inject/inject-app_2.11/jars/inject-app_2.11-2.1.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.inject:inject-app_2.11:2.1.2:tests:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.inject/inject-app_2.11/jars/inject-app_2.11-2.1.2-tests.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.inject:inject-core_2.11:2.1.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.inject/inject-core_2.11/jars/inject-core_2.11-2.1.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.inject:inject-core_2.11:2.1.2:tests:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.inject/inject-core_2.11/jars/inject-core_2.11-2.1.2-tests.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.inject:inject-modules_2.11:2.1.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.inject/inject-modules_2.11/jars/inject-modules_2.11-2.1.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.inject:inject-modules_2.11:2.1.2:tests:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.inject/inject-modules_2.11/jars/inject-modules_2.11-2.1.2-tests.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.inject:inject-request-scope_2.11:2.1.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.inject/inject-request-scope_2.11/jars/inject-request-scope_2.11-2.1.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.inject:inject-server_2.11:2.1.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.inject/inject-server_2.11/jars/inject-server_2.11-2.1.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter.inject:inject-server_2.11:2.1.2:tests:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter.inject/inject-server_2.11/jars/inject-server_2.11-2.1.2-tests.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:finagle-core_2.11:6.31.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/finagle-core_2.11/jars/finagle-core_2.11-6.31.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:finagle-http_2.11:6.31.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/finagle-http_2.11/jars/finagle-http_2.11-6.31.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:finagle-stats_2.11:6.31.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/finagle-stats_2.11/jars/finagle-stats_2.11-6.31.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:finagle-thrift_2.11:6.31.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/finagle-thrift_2.11/jars/finagle-thrift_2.11-6.31.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:finagle-zipkin_2.11:6.31.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/finagle-zipkin_2.11/jars/finagle-zipkin_2.11-6.31.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:jsr166e:1.0.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/jsr166e/jars/jsr166e-1.0.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:scrooge-core_2.11:4.3.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/scrooge-core_2.11/jars/scrooge-core_2.11-4.3.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:twitter-server_2.11:1.16.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/twitter-server_2.11/jars/twitter-server_2.11-1.16.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:util-app_2.11:6.30.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/util-app_2.11/jars/util-app_2.11-6.30.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:util-cache_2.11:6.30.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/util-cache_2.11/jars/util-cache_2.11-6.30.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:util-codec_2.11:6.30.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/util-codec_2.11/jars/util-codec_2.11-6.30.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:util-collection_2.11:6.30.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/util-collection_2.11/jars/util-collection_2.11-6.30.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:util-core_2.11:6.30.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/util-core_2.11/jars/util-core_2.11-6.30.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:util-events_2.11:6.30.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/util-events_2.11/jars/util-events_2.11-6.30.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:util-function_2.11:6.30.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/util-function_2.11/jars/util-function_2.11-6.30.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:util-hashing_2.11:6.30.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/util-hashing_2.11/jars/util-hashing_2.11-6.30.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:util-jvm_2.11:6.30.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/util-jvm_2.11/jars/util-jvm_2.11-6.30.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:util-lint_2.11:6.30.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/util-lint_2.11/jars/util-lint_2.11-6.30.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:util-logging_2.11:6.30.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/util-logging_2.11/jars/util-logging_2.11-6.30.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:util-registry_2.11:6.30.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/util-registry_2.11/jars/util-registry_2.11-6.30.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.twitter:util-stats_2.11:6.30.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.twitter/util-stats_2.11/jars/util-stats_2.11-6.30.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.akka:akka-actor_2.11:2.3.13:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.akka/akka-actor_2.11/jars/akka-actor_2.11-2.3.13.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.akka:akka-actor_2.11:2.4.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.akka/akka-actor_2.11/jars/akka-actor_2.11-2.4.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.akka:akka-slf4j_2.11:2.3.13:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.akka/akka-slf4j_2.11/jars/akka-slf4j_2.11-2.3.13.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.netty:netty-http-pipelining:1.1.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.netty/netty-http-pipelining/jars/netty-http-pipelining-1.1.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.play:build-link:2.4.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.play/build-link/jars/build-link-2.4.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.play:play-datacommons_2.11:2.4.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.play/play-datacommons_2.11/jars/play-datacommons_2.11-2.4.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.play:play-exceptions:2.4.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.play/play-exceptions/jars/play-exceptions-2.4.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.play:play-functional_2.11:2.4.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.play/play-functional_2.11/jars/play-functional_2.11-2.4.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.play:play-iteratees_2.11:2.4.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.play/play-iteratees_2.11/jars/play-iteratees_2.11-2.4.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.play:play-json_2.11:2.4.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.play/play-json_2.11/jars/play-json_2.11-2.4.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.play:play-netty-server_2.11:2.4.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.play/play-netty-server_2.11/jars/play-netty-server_2.11-2.4.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.play:play-netty-utils:2.4.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.play/play-netty-utils/jars/play-netty-utils-2.4.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.play:play-server_2.11:2.4.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.play/play-server_2.11/jars/play-server_2.11-2.4.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.play:play-test_2.11:2.4.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.play/play-test_2.11/jars/play-test_2.11-2.4.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.play:play_2.11:2.4.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.play/play_2.11/jars/play_2.11-2.4.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe.play:twirl-api_2.11:1.1.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe.play/twirl-api_2.11/jars/twirl-api_2.11-1.1.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_com.typesafe:config:1.3.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/com.typesafe/config/bundles/config-1.3.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_commons-codec:commons-codec:1.10:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.10.jar"/>
+  </path>
+  
+  <path id="library.sbt:_commons-codec:commons-codec:1.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_commons-codec:commons-codec:1.9:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.9.jar"/>
+  </path>
+  
+  <path id="library.sbt:_commons-collections:commons-collections:3.2.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/commons-collections/commons-collections/jars/commons-collections-3.2.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_commons-fileupload:commons-fileupload:1.2.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/commons-fileupload/commons-fileupload/jars/commons-fileupload-1.2.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_commons-fileupload:commons-fileupload:1.3.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/commons-fileupload/commons-fileupload/jars/commons-fileupload-1.3.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_commons-io:commons-io:2.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/commons-io/commons-io/jars/commons-io-2.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_commons-lang:commons-lang:2.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/commons-lang/commons-lang/jars/commons-lang-2.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_commons-logging:commons-logging:1.1.3:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.1.3.jar"/>
+  </path>
+  
+  <path id="library.sbt:_io.netty:netty:3.10.1.final:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/io.netty/netty/bundles/netty-3.10.1.Final.jar"/>
+  </path>
+  
+  <path id="library.sbt:_io.netty:netty:3.10.4.final:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/io.netty/netty/bundles/netty-3.10.4.Final.jar"/>
+  </path>
+  
+  <path id="library.sbt:_javax.activation:activation:1.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/javax.activation/activation/jars/activation-1.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_javax.inject:javax.inject:1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/javax.inject/javax.inject/jars/javax.inject-1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_javax.mail:mail:1.4.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/javax.mail/mail/jars/mail-1.4.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_javax.servlet:servlet-api:2.5:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/javax.servlet/servlet-api/jars/servlet-api-2.5.jar"/>
+  </path>
+  
+  <path id="library.sbt:_javax.transaction:jta:1.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/javax.transaction/jta/jars/jta-1.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_joda-time:joda-time:2.5:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/joda-time/joda-time/jars/joda-time-2.5.jar"/>
+  </path>
+  
+  <path id="library.sbt:_joda-time:joda-time:2.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/joda-time/joda-time/jars/joda-time-2.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_joda-time:joda-time:2.8.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/joda-time/joda-time/jars/joda-time-2.8.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_junit:junit:4.11:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/junit/junit/jars/junit-4.11.jar"/>
+  </path>
+  
+  <path id="library.sbt:_junit:junit:4.12:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/junit/junit/jars/junit-4.12.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.codingwell:scala-guice_2.11:4.0.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.codingwell/scala-guice_2.11/jars/scala-guice_2.11-4.0.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.java.dev.jna:jna:3.4.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.java.dev.jna/jna/jars/jna-3.4.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.java.dev.jna:platform:3.4.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.java.dev.jna/platform/jars/platform-3.4.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.liftweb:lift-actor_2.11:3.0-m7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.liftweb/lift-actor_2.11/jars/lift-actor_2.11-3.0-M7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.liftweb:lift-common_2.11:3.0-m7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.liftweb/lift-common_2.11/jars/lift-common_2.11-3.0-M7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.liftweb:lift-json-ext_2.11:3.0-m7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.liftweb/lift-json-ext_2.11/jars/lift-json-ext_2.11-3.0-M7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.liftweb:lift-json_2.11:3.0-m7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.liftweb/lift-json_2.11/jars/lift-json_2.11-3.0-M7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.liftweb:lift-markdown_2.11:3.0-m7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.liftweb/lift-markdown_2.11/jars/lift-markdown_2.11-3.0-M7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.liftweb:lift-mongodb-record_2.11:3.0-m7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.liftweb/lift-mongodb-record_2.11/jars/lift-mongodb-record_2.11-3.0-M7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.liftweb:lift-mongodb_2.11:3.0-m7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.liftweb/lift-mongodb_2.11/jars/lift-mongodb_2.11-3.0-M7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.liftweb:lift-proto_2.11:3.0-m7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.liftweb/lift-proto_2.11/jars/lift-proto_2.11-3.0-M7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.liftweb:lift-record_2.11:3.0-m7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.liftweb/lift-record_2.11/jars/lift-record_2.11-3.0-M7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.liftweb:lift-util_2.11:3.0-m7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.liftweb/lift-util_2.11/jars/lift-util_2.11-3.0-M7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.liftweb:lift-webkit_2.11:3.0-m7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.liftweb/lift-webkit_2.11/jars/lift-webkit_2.11-3.0-M7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.sourceforge.cssparser:cssparser:0.9.14:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.sourceforge.cssparser/cssparser/jars/cssparser-0.9.14.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.sourceforge.htmlunit:htmlunit-core-js:2.15:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.sourceforge.htmlunit/htmlunit-core-js/jars/htmlunit-core-js-2.15.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.sourceforge.htmlunit:htmlunit:2.15:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.sourceforge.htmlunit/htmlunit/jars/htmlunit-2.15.jar"/>
+  </path>
+  
+  <path id="library.sbt:_net.sourceforge.nekohtml:nekohtml:1.9.21:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/net.sourceforge.nekohtml/nekohtml/jars/nekohtml-1.9.21.jar"/>
+  </path>
+  
+  <path id="library.sbt:_nu.validator.htmlparser:htmlparser:1.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/nu.validator.htmlparser/htmlparser/bundles/htmlparser-1.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.apache.commons:commons-exec:1.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.apache.commons/commons-exec/jars/commons-exec-1.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.apache.commons:commons-lang3:3.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.apache.commons/commons-lang3/jars/commons-lang3-3.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.apache.httpcomponents:httpclient:4.3.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.apache.httpcomponents/httpclient/jars/httpclient-4.3.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.apache.httpcomponents:httpcore:4.3.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.apache.httpcomponents/httpcore/jars/httpcore-4.3.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.apache.httpcomponents:httpmime:4.3.3:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.apache.httpcomponents/httpmime/jars/httpmime-4.3.3.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.apache.thrift:libthrift:0.5.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.apache.thrift/libthrift/jars/libthrift-0.5.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.clapper:grizzled-slf4j_2.11:1.0.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.clapper/grizzled-slf4j_2.11/jars/grizzled-slf4j_2.11-1.0.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.eclipse.jetty:jetty-http:8.1.15.v20140411:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.eclipse.jetty/jetty-http/jars/jetty-http-8.1.15.v20140411.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.eclipse.jetty:jetty-io:8.1.15.v20140411:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.eclipse.jetty/jetty-io/jars/jetty-io-8.1.15.v20140411.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.eclipse.jetty:jetty-util:8.1.15.v20140411:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.eclipse.jetty/jetty-util/jars/jetty-util-8.1.15.v20140411.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.eclipse.jetty:jetty-websocket:8.1.15.v20140411:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.eclipse.jetty/jetty-websocket/jars/jetty-websocket-8.1.15.v20140411.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.fluentlenium:fluentlenium-core:0.10.3:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.fluentlenium/fluentlenium-core/jars/fluentlenium-core-0.10.3.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.hamcrest:hamcrest-core:1.3:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.hamcrest/hamcrest-core/jars/hamcrest-core-1.3.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.javassist:javassist:3.19.0-ga:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.javassist/javassist/bundles/javassist-3.19.0-GA.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.joda:joda-convert:1.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.joda/joda-convert/jars/joda-convert-1.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.joda:joda-convert:1.7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.joda/joda-convert/jars/joda-convert-1.7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.mockito:mockito-core:1.9.5:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-1.9.5.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.mongodb.scala:mongo-scala-bson_2.11:1.1.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.mongodb.scala/mongo-scala-bson_2.11/jars/mongo-scala-bson_2.11-1.1.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.mongodb.scala:mongo-scala-driver_2.11:1.1.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.mongodb.scala/mongo-scala-driver_2.11/jars/mongo-scala-driver_2.11-1.1.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.mongodb:bson:3.2.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.mongodb/bson/jars/bson-3.2.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.mongodb:mongo-java-driver:2.12.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.mongodb/mongo-java-driver/jars/mongo-java-driver-2.12.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.mongodb:mongodb-driver-async:3.2.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.mongodb/mongodb-driver-async/jars/mongodb-driver-async-3.2.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.mongodb:mongodb-driver-core:3.2.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.mongodb/mongodb-driver-core/jars/mongodb-driver-core-3.2.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.mozilla:rhino:1.7r4:jar.classpath">
+    <pathelement location="${basedir}/../../../soft/activator-dist-1.3.7/repository/org.mozilla/rhino/1.7R4/jars/rhino.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.objenesis:objenesis:1.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.objenesis/objenesis/jars/objenesis-1.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.ow2.asm:asm-analysis:4.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.ow2.asm/asm-analysis/jars/asm-analysis-4.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.ow2.asm:asm-tree:4.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.ow2.asm/asm-tree/jars/asm-tree-4.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.ow2.asm:asm-util:4.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.ow2.asm/asm-util/jars/asm-util-4.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.ow2.asm:asm:4.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.ow2.asm/asm/jars/asm-4.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.parboiled:parboiled-core:1.1.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.parboiled/parboiled-core/jars/parboiled-core-1.1.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.parboiled:parboiled-java:1.1.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.parboiled/parboiled-java/jars/parboiled-java-1.1.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.pegdown:pegdown:1.2.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.pegdown/pegdown/jars/pegdown-1.2.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang.modules:scala-parser-combinators_2.11:1.0.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang.modules:scala-parser-combinators_2.11:1.0.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang.modules:scala-parser-combinators_2.11:1.0.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang.modules:scala-xml_2.11:1.0.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang.modules:scala-xml_2.11:1.0.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang.modules:scala-xml_2.11:1.0.5:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.5.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang:scala-compiler:2.11.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.11.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang:scala-compiler:2.11.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.11.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang:scala-library:2.11.7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang:scala-reflect:2.11.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang:scala-reflect:2.11.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang:scala-reflect:2.11.7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang:scalap:2.11.4:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang/scalap/jars/scalap-2.11.4.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-lang:scalap:2.11.7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-lang/scalap/jars/scalap-2.11.7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-sbt:test-interface:1.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-sbt/test-interface/jars/test-interface-1.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scala-stm:scala-stm_2.11:0.7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scala-stm/scala-stm_2.11/jars/scala-stm_2.11-0.7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scalacheck:scalacheck_2.11:1.11.3:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scalacheck/scalacheck_2.11/jars/scalacheck_2.11-1.11.3.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scalatest:scalatest_2.11:2.2.3:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scalatest/scalatest_2.11/bundles/scalatest_2.11-2.2.3.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scalaz:scalaz-concurrent_2.11:7.0.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scalaz/scalaz-concurrent_2.11/bundles/scalaz-concurrent_2.11-7.0.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scalaz:scalaz-core_2.11:7.0.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scalaz/scalaz-core_2.11/bundles/scalaz-core_2.11-7.0.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.scalaz:scalaz-effect_2.11:7.0.6:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.scalaz/scalaz-effect_2.11/bundles/scalaz-effect_2.11-7.0.6.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.seleniumhq.selenium:selenium-api:2.44.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.seleniumhq.selenium/selenium-api/jars/selenium-api-2.44.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.seleniumhq.selenium:selenium-chrome-driver:2.44.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.seleniumhq.selenium/selenium-chrome-driver/jars/selenium-chrome-driver-2.44.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.seleniumhq.selenium:selenium-firefox-driver:2.44.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.seleniumhq.selenium/selenium-firefox-driver/jars/selenium-firefox-driver-2.44.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.seleniumhq.selenium:selenium-htmlunit-driver:2.44.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.seleniumhq.selenium/selenium-htmlunit-driver/jars/selenium-htmlunit-driver-2.44.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.seleniumhq.selenium:selenium-ie-driver:2.44.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.seleniumhq.selenium/selenium-ie-driver/jars/selenium-ie-driver-2.44.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.seleniumhq.selenium:selenium-java:2.44.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.seleniumhq.selenium/selenium-java/jars/selenium-java-2.44.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.seleniumhq.selenium:selenium-remote-driver:2.44.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.seleniumhq.selenium/selenium-remote-driver/jars/selenium-remote-driver-2.44.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.seleniumhq.selenium:selenium-safari-driver:2.44.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.seleniumhq.selenium/selenium-safari-driver/jars/selenium-safari-driver-2.44.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.seleniumhq.selenium:selenium-support:2.44.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.seleniumhq.selenium/selenium-support/jars/selenium-support-2.44.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.slf4j:jcl-over-slf4j:1.7.12:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.slf4j/jcl-over-slf4j/jars/jcl-over-slf4j-1.7.12.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.slf4j:jcl-over-slf4j:1.7.7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.slf4j/jcl-over-slf4j/jars/jcl-over-slf4j-1.7.7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.slf4j:jul-to-slf4j:1.7.12:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.slf4j/jul-to-slf4j/jars/jul-to-slf4j-1.7.12.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.slf4j:jul-to-slf4j:1.7.7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.slf4j/jul-to-slf4j/jars/jul-to-slf4j-1.7.7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.slf4j:log4j-over-slf4j:1.7.7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.slf4j/log4j-over-slf4j/jars/log4j-over-slf4j-1.7.7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.slf4j:slf4j-api:1.7.12:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.12.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.slf4j:slf4j-api:1.7.2:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.2.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.slf4j:slf4j-api:1.7.5:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.5.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.slf4j:slf4j-api:1.7.7:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.7.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.specs2:classycle:1.4.3:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.specs2/classycle/jars/classycle-1.4.3.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.specs2:specs2_2.11:2.3.12:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.specs2/specs2_2.11/jars/specs2_2.11-2.3.12.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.w3c.css:sac:1.3:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.w3c.css/sac/jars/sac-1.3.jar"/>
+  </path>
+  
+  <path id="library.sbt:_org.webbitserver:webbit:0.4.14:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/org.webbitserver/webbit/jars/webbit-0.4.14.jar"/>
+  </path>
+  
+  <path id="library.sbt:_xalan:serializer:2.7.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/xalan/serializer/jars/serializer-2.7.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_xalan:xalan:2.7.1:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/xalan/xalan/jars/xalan-2.7.1.jar"/>
+  </path>
+  
+  <path id="library.sbt:_xerces:xercesimpl:2.11.0:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/xerces/xercesImpl/jars/xercesImpl-2.11.0.jar"/>
+  </path>
+  
+  <path id="library.sbt:_xml-apis:xml-apis:1.4.01:jar.classpath">
+    <pathelement location="${basedir}/../../../.ivy2/cache/xml-apis/xml-apis/jars/xml-apis-1.4.01.jar"/>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  
+  <path id="library.scala-sdk-2.11.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/.idea/modules/module_akka.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_akka-build.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_daomongodb.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_daomongodb-build.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_daoutil.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_daoutil-build.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_helloworld.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_helloworld-build.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_memcached.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_memcached-build.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_terminalgui.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_terminalgui-build.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_util.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_util-build.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_webfinatra.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_webfinatra-build.xml"/>
+  
+  <import file="${basedir}/webForwardend/module_webforwardend.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_webplay.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_webplay-build.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.akka, clean.module.akka-build, clean.module.daomongodb, clean.module.daomongodb-build, clean.module.daoutil, clean.module.daoutil-build, clean.module.helloworld, clean.module.helloworld-build, clean.module.memcached, clean.module.memcached-build, clean.module.terminalgui, clean.module.terminalgui-build, clean.module.util, clean.module.util-build, clean.module.webfinatra, clean.module.webfinatra-build, clean.module.webforwardend, clean.module.webplay, clean.module.webplay-build" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.akka, compile.module.akka-build, compile.module.daomongodb, compile.module.daomongodb-build, compile.module.daoutil, compile.module.daoutil-build, compile.module.helloworld, compile.module.helloworld-build, compile.module.memcached, compile.module.memcached-build, compile.module.terminalgui, compile.module.terminalgui-build, compile.module.util, compile.module.util-build, compile.module.webfinatra, compile.module.webfinatra-build, compile.module.webforwardend, compile.module.webplay, compile.module.webplay-build" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
