@@ -6,7 +6,6 @@ import unlimited_works.play.views
 object HomePage extends Controller {
 
   def index = Action {
-    println("enter")
-    Ok(views.html.signin())
+    Ok(views.html.signin( ))
   }
 }
