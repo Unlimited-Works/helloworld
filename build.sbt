@@ -24,6 +24,7 @@ lazy val helloworldModules = Seq(
 lazy val versions = new {
   val akkaActor = "2.4.1"
   val mongoScalaDriver = "1.1.0"
+  val mongoJavaDriver = "3.2.1"
 
   //web finatra
   val finatra = "2.1.2"
@@ -88,9 +89,12 @@ lazy val daoMongodb = (project in file("dao/mongodb")).
     moduleName := name.value,
     libraryDependencies ++= Seq(
       "org.mongodb.scala" %% "mongo-scala-driver" % versions.mongoScalaDriver,
-      "net.liftweb" %% "lift-mongodb-record" % versions.liftMongoRecorder
+      "net.liftweb" %% "lift-mongodb-record" % versions.liftMongoRecorder,
+      "org.mongodb" %	"mongodb-driver" % versions.mongoJavaDriver,
+      "com.typesafe.akka" %% "akka-actor" % versions.akkaActor
     )
   )
+
 
 lazy val daoUtil = (project in file("dao/util")).
   settings(buildSettings: _*).
@@ -139,3 +143,6 @@ lazy val terminalGUI = (project in file("terminalGUI")).
       "lanterna" % "2.1.9"
     )
   )
+
+lazy val socket = (project in file("socket")).
+  settings(Common.buildSettings: _*)

@@ -1,4 +1,6 @@
-GET     /signin     unlimited_works.play.controllers.HomePage.index
+GET     /signin     unlimited_works.play.controllers.HomePage.getSignin
+POST     /signin     unlimited_works.play.controllers.HomePage.authenVerfiy
+GET     /blog/index     unlimited_works.play.controllers.Blog.index
 
 
 GET  /assets/*file        controllers.Assets.at(path="/public", file)
