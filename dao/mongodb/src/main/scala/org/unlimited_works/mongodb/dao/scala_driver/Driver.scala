@@ -22,13 +22,13 @@ object Driver {
 
   def getDB(dbName: String) = dbs(dbName)
 
-  def addDB(dbName: String) = this.synchronized {
+  def addDB(dbName: String) = dbs.synchronized {
     val mongoClient: MongoClient = MongoClient()
     val database: MongoDatabase = mongoClient.getDatabase(dbName)
     dbs += Tuple2(dbName, database)
   }
 
-  def removeDB(name: String) = this.synchronized {
+  def removeDB(name: String) = dbs.synchronized {
     dbs -= name
   }
 }
